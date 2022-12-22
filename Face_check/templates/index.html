@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            display: inline-flex;
+            flex-direction : column;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            background-color: #D4E6FC;
+            justify-content: center;
+        }
+        .headen{
+            display: flex;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 15%;
+            background-color: #EDCDA4;
+            color: #352A3B;
+            align-items: center;
+            justify-content: center;
+        }
+        .headen h1{
+            margin: 0;
+            font-size: 6.5vmin;
+        }
+        form{
+            height: 85%;
+            margin: 0;
+            align-items: center;
+            justify-content:center;
+            display: flex;
+        }
+        input[type=submit]{
+            margin: 0 15px;
+            width: 5em;
+            height: 5em;
+            font-size: 5vmin;
+            border: 0 ;
+            background-color: #D4E6FC;
+            color: #352A3B;
+            cursor: pointer;
+            font-weight: bolder;
+            transition: 0.5s;
+        }
+        input:hover{
+            border: 1px solid #000;
+            background-color: #352A3B;
+            color: #D4E6FC;
+        }
+        @media only screen and (max-device-width: 500px){
+            input[type=submit]{
+                margin: 0 30px;
+                width: 350px;
+                height: 350px;
+                border: 1px solid #000;
+                background-color: #352A3B;
+                color: #D4E6FC;
+            }
+        }
+    </style>
+
+</head>
+<div class="headen">   
+    <h1> 人臉識別點名系統首頁 </h1>
+</div>
+<body>
+    <form method="post" action="">
+        <input id="teacher" name="send" type="submit" value="我是老師">
+        <input id="student" name="send" type="submit" value="我是學生">
+    </form>
+</body>
+</html>

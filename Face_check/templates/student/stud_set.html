@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stud_set.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/RWDstud_set.css') }}">
+    <style>
+        /* a{
+            display: flex;
+            align-items: center;
+            position: absolute;
+            float: left;
+            overflow: hidden;
+            padding: 0 20px;
+            height: 15%;
+            top: 0;
+            left: 0;
+        }
+        a img{
+            height: 50%;
+        } */
+    </style>
+    <script>
+        var h=0;
+        $(function(){
+            // do something
+            var _but=0;
+            var input = document.getElementById("uploadImg");
+            var container=document.getElementById("container");
+            input.addEventListener("change", upload);
+            
+            function upload(e){  //動態顯示上傳照片
+                let uploadImg=e.target.files || e.dataTransfer.files;
+                try {
+                    const img =  document.querySelector('img');
+                    img.classList.remove('new_img');
+                } catch (error) {
+                    console.log("Not img");
+                }
+                
+                var demo;
+                for (var i=0;i<uploadImg.length;i++){
+                    var div_img = document.createElement("img");
+                    div_img.className="new_img"
+                    container.appendChild(div_img);
+                    demo = document.getElementsByClassName("new_img")[i];
+                    demo.src = window.URL.createObjectURL(uploadImg[i]);
+                    /* console.log(demo)
+                    console.log(i) */
+                }
+                //console.log(demo.src)
+            }
+
+
+            $('#tab_btn').on('click', function() {
+                $('tr').toggleClass('active');
+                _but++;
+                if(_but%2 != 0){
+                    document.getElementById("tab_btn").style.webkitTransform = "rotate(90deg)";
+                }else{
+                    document.getElementById("tab_btn").style.webkitTransform = "rotate(0)";
+                }
+            });
+
+            $("#tab_btn").width($('h2').get(0).offsetHeight).height($('h2').get(0).offsetHeight);
+            
+            $("#container").submit(function (e){
+                
+                var file = $("#uploadImg").val();
+                if(file == ""){
+                    alert("請選擇照片");
+                    return false;
+                }
+                return true;
+            });
+        });
+        $(window).resize(function() {
+            $("#tab_btn").width($('h2').get(0).offsetHeight).height($('h2').get(0).offsetHeight);
+        });
+    </script>
+</head>
+<body>
+    <a href="{{ url_for('index') }}" ><img src="{{ url_for('static', filename='images/home.png') }}"></a>
+    <div class="headen">
+        <h1>學生設定系統</h1>
+    </div>
+    <h4 style="margin: 0;">學號：{{_ID}}</h4>
+    <div class="classBox">
+        <h2>課程</h2>
+        <button id="tab_btn">></button>
+        {% if table_display%}
+        <table id="tab">
+        <tr>
+            <th><div>課程編號</div></th>
+            <th><div>課程名稱</div></th>
+        </tr>
+        {% for i in studclass %}
+        <tr>
+            <td><div>{{i.classId}}</div></td>
+            <td><div>{{i.className}}</div></td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif%}
+    </div>
+    <div class="imgBox">
+        <h2>照片</h2>
+        
+        <div id="old_img" method="post" action="" >
+            <p>目前的照片</p>
+            {% for file, path in FileAndName %}
+            <form class="old_img_box" method="post" action="">
+                <img src="data:;base64, {{file}}" alt="">
+                <input name="send" type="submit" value="delete">
+                <input type="hidden" name="filename" value="{{path}}" style="display: none;">
+            </form>
+            {% endfor %}
+        </div>
+
+        <form id="container" method="post" action="" enctype=multipart/form-data>  
+            <br>
+            <p>{{msg}}</p>
+            <input name="send" type="submit" value="upload"><br>
+            <label class="custom-file-upload">
+                <input type=file name=file[] id="uploadImg" multiple="multiple" accept="image/*"/> 
+                選擇照片
+            </label>
+        </form>  
+    </div>
+</body>
+</html>

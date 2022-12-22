@@ -1,0 +1,159 @@
+html{
+    height: 100%;
+}
+body{
+    margin: 0;
+    padding:  0;
+    height: 100%;
+    text-align: center;
+    background-color: #D4E6FC;
+}
+a{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    float: left;
+    overflow: hidden;
+    padding: 0 20px;
+    height: 15%;
+    top: 0;
+    left: 0;
+}
+a img{
+    height: 50%;
+}
+h4{
+    float: left;
+}
+.headen{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 15%;
+    background-color: #EDCDA4;
+    color: #352A3B;
+    align-items: center;
+    justify-content: center;
+}
+.headen h1{
+    margin: 0;
+    font-size: 6.5vmin;
+}
+h2{
+    margin: 0;
+    padding: 10px;
+    color: #FFF;
+    background-color: #352A3B;
+}
+.classBox, .studBox{
+    position:relative ;
+    text-align: left;
+    margin: 0 15% 15px ;
+    background-color: #9CC6D3;
+    clear: both;
+}
+
+
+/*------------------Form----------------*/
+form{
+    text-align: center;
+    margin: 10px auto;
+    border: 0;
+    width: 40%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    flex-direction: column;
+    background-color: #9CC6D3;
+}
+input{
+    margin: 0;
+    font-size: 3vmin;
+    border: 0;
+}
+input[type=text]{
+    width: 80%;
+    height: 10%;
+}
+form div{
+    margin: 5px;
+    display: inline-flex;
+    justify-content: space-between;
+    height: 10%;
+    width: 80%;
+}
+input[type=submit]{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 30%;
+    cursor: pointer;
+    transition: 0.5s;
+}
+input[type=submit]:hover{
+    border: 1px solid #000;
+    background-color: #352A3B;
+    color: #FFFFFF;
+}
+.custom-file-upload{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0 10px;
+    height: 70px;
+    width: 75%;
+    font-size: 2.7vmin;
+    cursor: pointer;
+    background-color: white;
+    border: 5px dashed  #ccc;
+    transition: 0.5s;
+}
+.custom-file-upload:hover{
+    border: 1px solid #000;
+    background-color: #352A3B;
+    color: #FFFFFF;
+}
+
+/*---------------studbox---------------*/
+select{
+    margin: 5px;
+    font-size: 3vmin;
+    border: 0;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 1.1em;
+}
+th, td {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+th{
+    text-align: center;
+}
+tr{ background-color: #fff }
+tr:nth-child(even){background-color: #f2f2f2}
+th {
+    background-color: #97671D;
+    color: white;
+}
+tr td div, tr th div  {
+    max-height: 0;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: max-height 0.3s, padding 0.3s;
+}
+tr.active td div, tr.active th div {
+    max-height: 100px;
+    padding: 10px 10px;
+    transition: max-height 0.6s, padding 0.6s;
+}
+

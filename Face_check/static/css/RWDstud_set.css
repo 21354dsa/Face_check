@@ -1,0 +1,52 @@
+@media only screen and (min-width: 500px)  and (max-width: 900px){
+    img{
+        height: 15em;
+    }
+    #old_img{
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+@media only screen and (max-device-width: 500px){
+    h2{
+        font-size: 5vmin;
+    }
+    h4{
+        float:none;
+    }
+    .classBox, .imgBox{
+        margin: 0 5% 15px ;
+    }
+    table{
+        font-size: 3vmin;
+    }
+    img{
+        height: 25em;
+    }
+    #old_img{
+        display: flex;
+        flex-direction: column;
+    }
+    .old_img_box >input[type="submit"]{
+        /* height: 4em;*/
+        width: 15em; 
+        margin-bottom: 5px;
+        font-size: 3vmin;
+        background-color: #352A3B;
+        color: #fff;
+    }
+    p,h4{
+        font-size: 3vmin;
+    }
+    #container > input[type="submit"]{
+        height : 10vmin;
+    }
+    .custom-file-upload {
+        width: 265px;
+        height: 255px;
+        font-size: 3vmin;
+    }
+
+}

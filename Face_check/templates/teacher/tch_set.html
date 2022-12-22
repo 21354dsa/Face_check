@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/teach_set.css') }}">
+    <style>
+        @media only screen and (max-device-width: 500px){
+            .headen, a{
+                height: 10%;
+            }
+            h2{
+                font-size: 5vmin;
+            }
+            .classBox, .studBox{
+                margin: 0 5% 15px;
+            }
+            .classBox{
+                height: 30%;
+            }
+            form{
+                width: 80%;
+                height: 80%;
+            }
+            input[type=text]{
+                height: 20vmin;
+            }
+            .custom-file-upload{
+                height: 20vmin;
+            }
+            select{
+                font-size: 4vmin;
+            }
+            table{
+                font-size: 3vmin;
+            }
+            p,h4{
+                font-size: 3vmin;
+            }
+            h4{
+                float:none;
+            }
+        }
+    </style>
+
+    <script type=text/javascript>
+        
+        $(function(){
+            /* var file = $('#image_file')[0].files[0]
+            if (file){
+            console.log(file.name);
+            } */
+
+            $('#xlsxfile').change(function() {
+                var filename = $('#xlsxfile').val();
+
+                $(".custom-file-upload").children("p").text(filename);
+            });
+
+            setTimeout(function() 
+            {
+                $('tr').toggleClass('active');
+            }, 100);
+
+            $("#listShow").submit(function (e){
+                
+                var select = $("select[name='select']").val();
+                
+                if(select == "請選擇你要查詢的課程"){
+                    alert(select);
+                    return false;
+                }
+                return true;
+            });
+        });
+    </script>
+</head>
+<body>
+    <a href="{{ url_for('index') }}" ><img src="{{ url_for('static', filename='images/home.png') }}"></a>
+    <div class="headen">
+        <h1>教師設定系統</h1>
+    </div>
+    <h4 style="margin: 0;">帳號：{{_ID}}</h4>
+    <div class="classBox">
+    <h2>課程設定</h2>
+        <form method="post" enctype="multipart/form-data">
+            <input type="text" name="classNumber" placeholder="課程編號"><br>
+            <input type="text" name="className" placeholder="課程名稱"><br>
+            <label class="custom-file-upload">
+                <input id="xlsxfile" type="file" name="__file" accept=".xlsx" style="display: none;">
+                <p>選擇修課名單(.xlsx)</p>
+            </label>
+            <br>
+            <input type="submit" name="send" value="上傳">
+            <input type="hidden" name="Do" value="updata_class">
+            <p>{{updata_msg}}</p>
+        </form>
+    </div>
+    <div class="studBox">
+        <h2>學生選擇註冊狀況</h2>
+        <form id="listShow" method="get" accept="" action="" >
+            <select name="select">
+                <option >請選擇你要查詢的課程</option>
+                {% for i in classNames %}
+                <option value="{{i.id}}">{{i.className}}</option>
+                {% endfor %}
+            </select>
+            <div>
+                <input type="submit" name="send" value="搜尋">
+                <input type="submit" name="send" value="刪除">
+            </div>
+        </form>
+    
+        {% if table_display%}
+        <table id="classstud">
+            <tr>
+            <th><div>班級</div></th>
+            <th><div>學號</div></th>
+            <th><div>姓名</div></th>
+            <th><div>註冊狀況</div></th>
+            </tr>
+            {% for i in studchooes %}
+            <tr>
+                <td><div>{{i.studClass}}</div></td>
+                <td><div>{{i.studentId}}</div></td>
+                <td><div>{{i.studName}}</div></td>
+                <td><div>{{i.choose}}</div></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif%}
+    </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+html{
+    height: 100%;
+}
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    text-align: center;
+    background-color: #D4E6FC;
+}
+a{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    float: left;
+    overflow: hidden;
+    padding: 0 20px;
+    height: 15%;
+    top: 0;
+    left: 0;
+}
+a img{
+    height: 50%;
+}
+.headen{
+    
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 15%;
+    background-color: #EDCDA4;
+    color: #352A3B;
+    align-items: center;
+    justify-content: center;
+}
+.headen h1{
+    margin: 0;
+    font-size: 6.5vmin;
+}
+.formBox{
+    display: flex;
+    justify-content: center;
+    height: 85%;
+    align-items: center;
+}
+form{
+    text-align: center;
+    margin: 0 auto;
+    border: 0;
+    width: 70vmin;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    flex-direction: column;
+    background-color: #9CC6D3;
+    
+}
+input{
+    margin: 0;
+    font-size: 1.2em;
+    border: 0;
+    
+}
+input[type=text], input[type=password]{
+    width: 80%;
+    height: 10%;
+}
+form div{
+    display: inline-flex;
+    justify-content: space-between;
+    height: 10%;
+    width: 80%;
+}
+input[type=submit]{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 30%;
+    cursor: pointer;
+    transition: 0.5s;
+}
+input[type=submit]:hover{
+    border: 1px solid #000;
+    background-color: #352A3B;
+    color: #FFFFFF;
+}
+form p{
+    color: rgb(140, 6, 6);
+}

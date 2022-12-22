@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    
+    <title>學生登入介面</title>
+
+    <style>
+
+
+        @media only screen and (max-device-width: 500px){
+  
+            .headen h1{
+                font-size: 7vmin;
+            }
+            body{
+                font-size: 4vmin;
+            }
+            form div{
+                display: flex;
+                flex-direction: column-reverse;
+                align-items: center;
+                height: 20%;
+                width: 100%;
+            }
+            input[type=submit]{
+                margin: 10px;
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('index') }}" ><img src="{{ url_for('static', filename='images/home.png') }}"></a>
+    <div class="headen">   
+        <h1>學生登入介面</h1>
+    </div>
+    <div class="formBox">
+        <form class="form" method="post">
+            <input name='_ID' type="text" placeholder="學號" value="{{id}}" />
+            <input name='password' type="text" placeholder="一次性密碼" class="form__input" />
+            <div>
+            <input class="in" name="send" type="submit" value="login" style="width: 30%;">
+            <input class="get" name="send" type="submit" value="Get password" style="width: 50%;">
+            </div>
+            <p name="msg">{{msg}}</p>
+        </form>
+    </div>
+</body>
+</html>
